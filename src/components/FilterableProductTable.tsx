@@ -1,9 +1,9 @@
 import { useState } from "react";
 import ProductTable from "./ProductTable";
 import SearchBar from "./SearchBar";
-import { FilterableProductTableProps } from "../interfaces/FilterableProductTableProps";
+import { IFilterableProductTableProps } from "../interfaces/FilterableProductTableProps";
 
-const FilterableProductTable = ({ products }: FilterableProductTableProps) => {
+const FilterableProductTable = ({ products }: IFilterableProductTableProps) => {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
 
