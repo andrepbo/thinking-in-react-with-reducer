@@ -1,13 +1,18 @@
 import { ReactElement } from "react";
 import ProductCategoryRow from "./ProductCategoryRow";
 import ProductRow from "./ProductRowProps";
-import { FilterableProductTableProps } from "../interfaces/FilterableProductTableProps";
+import { IFilterableProductTableProps } from "../interfaces/FilterableProductTableProps";
+
+interface IProductTableProps extends IFilterableProductTableProps {
+  filterText: string;
+  inStockOnly: boolean;
+}
 
 const ProductTable = ({
   products,
   filterText,
   inStockOnly,
-}: FilterableProductTableProps) => {
+}: IProductTableProps) => {
   const rows: ReactElement[] = [];
   let lastCategory: string | null = null;
 
