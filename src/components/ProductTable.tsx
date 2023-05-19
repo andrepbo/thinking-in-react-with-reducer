@@ -1,18 +1,22 @@
 import { ReactElement } from "react";
 import ProductCategoryRow from "./ProductCategoryRow";
-import ProductRow from "./ProductRowProps";
-import { IFilterableProductTableProps } from "../interfaces/FilterableProductTableProps";
+import ProductRow from "./ProductRow";
+import { ProductProps } from "../interfaces/products.interfaces";
+import { ProductActions } from "../reducers/product.reducer";
 
-interface IProductTableProps extends IFilterableProductTableProps {
+interface ProductTableProps {
+  products: ProductProps[];
   filterText: string;
   inStockOnly: boolean;
+  dispatch: React.Dispatch<ProductActions>;
 }
 
 const ProductTable = ({
   products,
   filterText,
   inStockOnly,
-}: IProductTableProps) => {
+  dispatch,
+}: ProductTableProps) => {
   const rows: ReactElement[] = [];
   let lastCategory: string | null = null;
 
@@ -31,7 +35,9 @@ const ProductTable = ({
         />
       );
     }
-    rows.push(<ProductRow product={product} key={product.name} />);
+    rows.push(
+      <ProductRow product={product} key={product.name} dispatch={dispatch} />
+    );
     lastCategory = product.category;
   });
 

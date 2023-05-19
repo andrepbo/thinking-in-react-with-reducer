@@ -1,13 +1,17 @@
+import { ProductActions } from "../reducers/product.reducer";
+import RemoveProduct from "./RemoveProduct";
+
 type ProductRowProps = {
   product: {
-    category: string | null;
+    category: string;
     price: string;
     stocked: boolean;
     name: string;
   };
+  dispatch: React.Dispatch<ProductActions>;
 };
 
-const ProductRow = ({ product }: ProductRowProps) => {
+const ProductRow = ({ product, dispatch }: ProductRowProps) => {
   const name = product.stocked ? (
     product.name
   ) : (
@@ -18,6 +22,7 @@ const ProductRow = ({ product }: ProductRowProps) => {
     <tr>
       <td>{name}</td>
       <td>{product.price}</td>
+      <RemoveProduct product={product} dispatch={dispatch} />
     </tr>
   );
 };

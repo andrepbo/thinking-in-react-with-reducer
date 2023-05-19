@@ -1,14 +1,19 @@
 import { useState } from "react";
 import ProductTable from "./ProductTable";
 import SearchBar from "./SearchBar";
-import { IFilterableProductTableProps } from "../interfaces/FilterableProductTableProps";
+import { FilterableProductTableProps } from "../interfaces/products.interfaces";
+import AddProduct from "./AddProduct";
 
-const FilterableProductTable = ({ products }: IFilterableProductTableProps) => {
+const FilterableProductTable = ({
+  products,
+  dispatch,
+}: FilterableProductTableProps) => {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
 
   return (
     <div>
+      <AddProduct dispatch={dispatch} />
       <SearchBar
         filterText={filterText}
         inStockOnly={inStockOnly}
@@ -19,6 +24,7 @@ const FilterableProductTable = ({ products }: IFilterableProductTableProps) => {
         products={products}
         filterText={filterText}
         inStockOnly={inStockOnly}
+        dispatch={dispatch}
       />
     </div>
   );
