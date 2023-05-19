@@ -1,3 +1,3 @@
-### Example tutorial provided by React to demonstrate how to think when building user interfaces
+### Include reducer to a example tutorial provided by React to demonstrate how to think when building user interfaces
 
 Source: [React](https://react.dev/learn/thinking-in-react)
